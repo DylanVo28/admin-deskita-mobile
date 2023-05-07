@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/lyAddToCart">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".ProductDetailActivity">
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/lstProductImgs"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:layout_marginTop="10dp"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="30"
+                app:iss_delay="0"
+                app:iss_period="500"
+                app:iss_title_background="@color/transparent" />
+
+            <TextView
+                android:id="@+id/txtProductName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lstProductImgs"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Ten san pham"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtProductName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="10.000đ"
+                android:textColor="@color/price"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutRating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtPrice"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0"
+                android:background="@drawable/border_rating"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtRatingPoint"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:text="4.5"
+                    android:textColor="@color/textBlack"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <RatingBar
+                    android:id="@+id/ratingProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:clickable="false"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:progressBackgroundTint="@color/grey_font"
+                    android:progressTint="@color/star"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6"
+                    android:stepSize="0.5"
+                    android:transformPivotX="0dp"
+                    android:transformPivotY="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyTittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layoutRating"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/separater0"
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawableLeft="@drawable/ic_rate_review_24"
+                    android:drawablePadding="7dp"
+                    android:padding="5dp"
+                    android:text="Đánh giá:"
+                    android:textColor="@color/textBlack"
+                    android:textSize="22dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@id/layoutRating"
+                    android:background="?android:attr/listDivider" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/lstReviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lyTittle" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbProductDetail"
+        style="@style/Theme.AppCompat.DayNight.DarkActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/transparent"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingLeft="@android:dimen/app_icon_size"
+        app:menu="@menu/menu_tbsearch">
+
+        <ImageButton
+            android:id="@+id/bttBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/round_button"
+            android:onClick="goBack"
+            android:src="@drawable/ic_back_24" />
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <LinearLayout
+        android:id="@+id/lyAddToCart"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@color/add_to_cart_color"
+        android:gravity="center"
+        android:onClick="dialogAddToCart"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="8dp"
+            android:gravity="center"
+            android:text="Thêm vào giỏ"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="53dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_add_to_cart_24" />
+    </LinearLayout>
+</RelativeLayout>
